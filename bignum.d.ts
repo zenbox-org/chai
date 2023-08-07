@@ -3,22 +3,22 @@
 
 declare module 'chai-bignumber' {
 
-  function chaiBignumber(bignumber: BigNumber): (chai: Chai, utils: unknown) => void;
+  function chaiBignumber(bignumber: BigNumber.Instance): (chai: Chai, utils: unknown) => void
 
   namespace chaiBignumber {
 
   }
 
-  export = chaiBignumber;
+  export = chaiBignumber
 }
 
 declare namespace Chai {
   // For BDD API
   interface Assertion extends LanguageChains, NumericComparison, TypeComparison {
-    bignumber: Assertion;
+    bignumber: Assertion
   }
 
   interface NumberComparer {
-    (value: number | Date | BigNumber.Instance, message?: string): Assertion;
+    (value: number | Date | BigNumber.Instance, message?: string): Assertion
   }
 }

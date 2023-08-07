@@ -15,7 +15,11 @@ export const expectEqualResults = (actualName = 'Actual', expectedName = 'Expect
       expect(actualResult.reason.toString()).to.equal(expectedResult.reason.toString())
       if (actualResult.reason instanceof ImplementationError || expectedResult.reason instanceof ImplementationError) {
         throw new Error('Unexpected ImplementationError')
+      } else {
+        throw actualResult
       }
+    } else {
+      throw new Error(`The statuses of results are different: actualResult.status = ${actualResult.status}, expectedResult.status = ${expectedResult.status}`)
     }
   } catch (e) {
     if (e instanceof Error) {
